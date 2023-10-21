@@ -20,7 +20,7 @@
 
 		to your new<br />diGref app
 	</h1>
-
+	<span id="clock"></span>
 	<h2>
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
