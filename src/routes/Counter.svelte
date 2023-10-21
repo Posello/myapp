@@ -19,20 +19,17 @@
 
 	setInterval(() => {
 		const date: Date = new Date();
-		let hora:string =
-			date.toLocaleTimeString('es-ES',{
-				hour:'2-digit',
-				minute:'2-digit',
-				second:'2-digit',
-		});
-		let fecha:string =
-			date.toLocaleDateString('es-ES',{
-				weekday:'long',
-				day:'2-digit',
-				month:'2-digit',
-				year:'numeric'
-		});
-		reloj = fecha + " " + hora;
+			let fecha:string =
+				date.toLocaleDateString('es-ES',{
+					weekday:'long',
+					day:'2-digit',
+					month:'2-digit',
+					year:'numeric',
+					hour:'2-digit',
+					minute:'2-digit',
+					second:'2-digit'
+			});
+		reloj = fecha;
 	}, 1);
 
 </script>
