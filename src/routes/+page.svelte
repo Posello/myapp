@@ -18,7 +18,7 @@
 			</picture>
 		</span>
 
-		to your new<br />di Gref app
+		to your new<br />diGref app
 	</h1>
 
 	<h2>
