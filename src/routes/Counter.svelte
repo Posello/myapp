@@ -13,23 +13,31 @@
 	}
 
 
-	let clock:any
+	
+
+	let reloj:string = " ";
 
 	setInterval(() => {
-
 		const date: Date = new Date();
-		clock.innerText = date.toLocaleDateString('es-ES',{
-			hour:'2-digit',
-			minute:'2-digit',
-			second:'2-digit',
-
+		let hora:string =
+			date.toLocaleTimeString('es-ES',{
+				hour:'2-digit',
+				minute:'2-digit',
+				second:'2-digit',
 		});
-
-	}, 1000);
+		let fecha:string =
+			date.toLocaleDateString('es-ES',{
+				weekday:'long',
+				day:'2-digit',
+				month:'2-digit',
+				year:'numeric'
+		});
+		reloj = fecha + " " + hora;
+	}, 1);
 
 </script>
 
-<span bind:this={clock}></span>
+<span>{reloj}</span>
 
 <div class="counter">
 	<button on:click={() => (count -= 1)} aria-label="Decrease the counter by one">
