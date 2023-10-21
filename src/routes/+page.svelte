@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Myapp</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
@@ -20,9 +20,6 @@
 
 		to your new<br />diGref app
 	</h1>
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
 
 	<Counter />
 </section>

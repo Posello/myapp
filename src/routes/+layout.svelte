@@ -11,7 +11,7 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>Github Repo <a href="https://github.com/Posello/myapp">github.com/Posello/myapp</a></p>
 	</footer>
 </div>
 
