@@ -11,7 +11,23 @@
 		// handle negative numbers
 		return ((n % m) + m) % m;
 	}
+
+
+	let clock
+
+	setInterval(() => {
+		const date: Date = new Date();
+		clock.innerText = date.toLocaleTimeString('es-ES',{
+			hour:'2-digit',
+			minute:'2-digit',
+			second:'2-digit'
+		});
+
+	}, 1000);
+
 </script>
+
+<span bind:this={clock}></span>
 
 <div class="counter">
 	<button on:click={() => (count -= 1)} aria-label="Decrease the counter by one">
