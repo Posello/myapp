@@ -121,7 +121,7 @@
     width: 100%;
   }
 
-  .counter button {
+  /* .counter button {
     width: 2em;
     padding: 0;
     display: flex;
@@ -131,9 +131,9 @@
     background-color: transparent;
     touch-action: manipulation;
     font-size: 2rem;
-  }
+  } */
 
-  .counter button:hover {
+  /* .counter button:hover {
     background-color: var(--color-bg-1);
   }
 
@@ -146,7 +146,7 @@
     vector-effect: non-scaling-stroke;
     stroke-width: 2px;
     stroke: #444;
-  }
+  } */
 
   .counter-viewport {
     width: 100%;
@@ -174,8 +174,8 @@
     height: 100%;
   }
 
-  .hidden {
+  /* .hidden {
     top: -100%;
     user-select: none;
-  }
+  } */
 </style>
