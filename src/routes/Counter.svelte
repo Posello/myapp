@@ -35,17 +35,83 @@
     });
     reloj = fecha;
   }, 1);
+  let intervalo: any;
+  // se tiene que poder hacer algo con lo que devuelve la funcion diferencia fecha
+  function startCountDown(diferenceDate: diferenciaFechas) {
+    intervalo = setInterval(() => {
+      imprimirContador = restarSegundo(diferenceDate);
 
-  let userInput = "";
-  let diferencia: diferenciaFechas;
-  function updateDate() {
-    if (userInput !== "") {
-      let currentDate: Date = new Date();
-      let date = new Date(userInput);
-      diferencia = diferenciaFechas(currentDate, date);
-    }
+      if (
+        diferenceDate.dias === 0 &&
+        diferenceDate.horas === 0 &&
+        diferenceDate.minutos === 0 &&
+        diferenceDate.segundos === 0
+      ) {
+        imprimirContador = { dias: 0, horas: 0, minutos: 0, segundos: 0 };
+        clearInterval(intervalo);
+      }
+
+      console.log(diferenceDate);
+    }, 1000);
   }
 
+  function restarSegundo(diferenceDate: diferenciaFechas) {
+    if (diferenceDate.segundos > 0) {
+      diferenceDate.segundos--;
+    } else {
+      if (diferenceDate.minutos > 0) {
+        diferenceDate.minutos--;
+        diferenceDate.segundos = 59;
+      } else {
+        if (diferenceDate.horas > 0) {
+          diferenceDate.horas--;
+          diferenceDate.minutos = 59;
+          diferenceDate.segundos = 59;
+        } else {
+          if (diferenceDate.dias > 0) {
+            diferenceDate.dias--;
+            diferenceDate.horas = 23;
+            diferenceDate.minutos = 59;
+            diferenceDate.segundos = 59;
+          }
+        }
+      }
+    }
+    return diferenceDate;
+  }
+
+  let userInput = "";
+  let diferencia: diferenciaFechas | null;
+  let imprimirContador: diferenciaFechas = {
+    dias: 0,
+    horas: 0,
+    minutos: 0,
+    segundos: 0,
+  };
+  let validDate = false;
+  function updateDate() {
+    detenerCuentaRegresiva();
+    if (userInput !== "") {
+      let currentDate: Date = new Date();
+      let userInputDate = new Date(userInput);
+      if (userInputDate > currentDate) {
+        diferencia = diferenciaFechas(currentDate, userInputDate);
+        validDate = true;
+        startCountDown(diferencia);
+      } else {
+        imprimirContador = {
+          dias: 0,
+          horas: 0,
+          minutos: 0,
+          segundos: 0,
+        };
+        validDate = false;
+      }
+    }
+  }
+  function detenerCuentaRegresiva(): void {
+    clearInterval(intervalo);
+  }
   // optimizar esta parte del codigo porque he hecho copia pega del chat gpt xddddd
   function diferenciaFechas(fecha1: any, fecha2: any) {
     let diferencia = Math.abs(fecha1 - fecha2); // Obtiene la diferencia en milisegundos
@@ -81,11 +147,15 @@
   />
 </label>
 <p>La fecha es: {userInput}</p>
-{#if diferencia != null}
+{#if diferencia != null && validDate}
   <p>
-    La diferencia es: dias:{diferencia?.dias}, horas: {diferencia?.horas},
-    minutos: {diferencia?.minutos}, segundos: {diferencia?.segundos}
+    Quedan {#if imprimirContador?.dias != 0}
+      {imprimirContador?.dias} dias,{/if}
+    {imprimirContador?.horas} horas, {imprimirContador?.minutos}
+    minutos, {imprimirContador?.segundos} segundos
   </p>
+{:else if diferencia != null && !validDate}
+  <p>Introduce una fecha correcta. No podemos retroceder en el timpo.</p>
 {:else}
   <p>
     Introduce una fecha para tener tu contador de <strong>DiGref</strong> 😎😎😎
