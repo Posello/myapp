@@ -34,7 +34,7 @@
       second: "2-digit",
     });
     reloj = fecha;
-  }, 1);
+  }, 1000);
   let intervalo: any;
   // se tiene que poder hacer algo con lo que devuelve la funcion diferencia fecha
   function startCountDown(diferenceDate: diferenciaFechas) {
@@ -113,6 +113,7 @@
     clearInterval(intervalo);
   }
   // optimizar esta parte del codigo porque he hecho copia pega del chat gpt xddddd
+  // en vez de imprimir los dias tendria que imprimir como mucho las horas
   function diferenciaFechas(fecha1: any, fecha2: any) {
     let diferencia = Math.abs(fecha1 - fecha2); // Obtiene la diferencia en milisegundos
 
@@ -172,6 +173,27 @@
   <div class="counter-viewport">
     <div class="counter-digits">
       <strong>{reloj}</strong>
+    </div>
+  </div>
+
+  <!-- <button on:click={() => (count += 1)} aria-label="Increase the counter by one">
+		<svg aria-hidden="true" viewBox="0 0 1 1">
+			<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
+		</svg>
+	</button> -->
+</div>
+<div class="counter">
+  <!-- <button on:click={() => (count -= 1)} aria-label="Decrease the counter by one">
+		<svg aria-hidden="true" viewBox="0 0 1 1">
+			<path d="M0,0.5 L1,0.5" />
+		</svg>
+	</button> -->
+
+  <div class="counter-viewport">
+    <div class="counter-digits">
+      <strong
+        >{imprimirContador.dias}:{imprimirContador.horas}:{imprimirContador.minutos}:{imprimirContador.segundos}</strong
+      >
     </div>
   </div>
 
